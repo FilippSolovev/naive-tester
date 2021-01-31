@@ -1,3 +1,10 @@
+import sys
+import logging
+
+from tester.io import check_files_existence, get_files, do_files_comply
+from tester.runner import run_jobs
+
+logger = logging.getLogger(__name__)
 
 
 def main():
@@ -7,8 +14,8 @@ def main():
     else:
         sys.exit()
 
-    check_file_existence(script_name, 'Script given does not exist')
-    check_file_existence(script_name, 'Directory given does not exist')
+    check_files_existence(script_name, 'Script given does not exist')
+    check_files_existence(script_name, 'Directory given does not exist')
 
     jobs_arguments = get_files(dir_name, '.in')
     output_files = get_files(dir_name, '.out')
