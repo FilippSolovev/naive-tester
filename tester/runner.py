@@ -34,10 +34,10 @@ def assert_job(job, reference_output):
     except AssertionError:
         logger.error(
             f'Failed run of the {script} with {args}. '
-            f'The output should be {reference_output}')
+            f'The output should be {reference_output}.')
 
 
 def run_jobs(jobs_with_outputs):
-    """Sequentially run scripts """
+    """Sequentially run scripts."""
     for job_with_output in jobs_with_outputs:
         assert_job(*job_with_output)
