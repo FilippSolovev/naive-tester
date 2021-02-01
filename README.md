@@ -10,7 +10,7 @@ output in the '.out' file, i.e., 'test_0.in' and 'test_0.out'.
 Each pair must have identical names except for extensions.
 
 ## Installation
-The Naive Tester can be installed from [PyPi]():
+The Naive Tester can be installed from [PyPi](https://pypi.org/project/naive-tester/1.0.0/):
 ```
 $ pip install naive-tester
 ```
