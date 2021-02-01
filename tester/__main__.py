@@ -1,3 +1,27 @@
+"""Naive Tester
+
+Usage:
+-----
+
+    $ tester [script] [test_case_folder]
+
+script - a script to test
+test_case_folder - a folder containing pairs of .in and .out files,
+where
+    .in holds [script] argument
+    .out holds expected output
+
+Contact:
+-------
+
+More information is available at:
+- https://github.com/FilippSolovev/naive-tester
+
+Version:
+-------
+
+- naive-tester v1.0.0
+"""
 import sys
 import logging
 

@@ -1,3 +1,4 @@
+"""Run an external script and assess its output"""
 import sys
 import subprocess
 import logging

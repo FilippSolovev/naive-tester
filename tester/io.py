@@ -1,3 +1,4 @@
+"""Handle files for tester"""
 import sys
 import os
 import logging
