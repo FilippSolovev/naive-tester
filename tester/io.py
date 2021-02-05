@@ -1,4 +1,4 @@
-"""Handle files for tester"""
+"""Handle files for tester."""
 import sys
 import os
 import logging
@@ -29,3 +29,23 @@ def do_files_comply(actual_in_files, actual_out_files):
     """Check if the 'in' files correspond to the 'out' files by names."""
     expected = set(map(lambda x: x[:-3] + '.out', actual_in_files))
     return not expected.difference(set(actual_out_files))
+
+
+def load_files(file_names):
+    """Reads bunch of files and loads its content.
+
+    Parameters
+    ----------
+    file_names : a list with names of the files to load content from.
+
+    Returns
+    -------
+    A list where each element keeps the content of a file.
+
+    """
+    output_list = []
+    for file_name in file_names:
+        with open(file_name, 'r') as output_file:
+            output = output_file.read().strip()
+            output_list.append(output)
+    return output_list

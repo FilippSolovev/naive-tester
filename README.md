@@ -60,6 +60,9 @@ Note ```2>&1``` because we are piping ```stderr```.
 For now, the Naive Tester can handle only scripts with a single argument.
 This limitation needs to be overcome in the future version.
 
+## Release History
+* 1.0.0
+    * 1.0.1 Minor bug fixes
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/FilippSolovev/naive-tester/blob/master/LICENSE) file for details

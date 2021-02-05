@@ -19,4 +19,4 @@ logging.getLogger(__name__).addHandler(logging.NullHandler())
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 
 # Version of naive_tester package
-__version__ = '1.0.0'
+__version__ = '1.0.1'
