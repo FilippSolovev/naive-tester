@@ -1,9 +1,26 @@
 """Run an external script and assess its output"""
-import sys
-import subprocess
+import contextlib
 import logging
+import subprocess
+import sys
+import time
+
 
 logger = logging.getLogger(__name__)
+
+
+@contextlib.contextmanager
+def timer():
+    """Time the execution of a context block.
+
+    Yields:
+    ------
+        None
+    """
+    start = time.time()
+    yield
+    end = time.time()
+    logger.info(f'Elapsed time: {(end - start):.2f}s')
 
 
 def run_job(job):
@@ -30,8 +47,10 @@ def assert_job(job, reference_output):
     """Check if script's output coincides with the reference output."""
     script, args = job
     try:
-        assert run_job(job) == reference_output
-        logger.info(f'Successfully run the {script} with {args}')
+        with timer():
+            assert run_job(job) == reference_output
+            logger.info(f'Successfully run the {script}. With argument(s) '
+                        f'{args} got the output of {reference_output}')
     except AssertionError:
         logger.error(
             f'Failed run of the {script} with {args}. '

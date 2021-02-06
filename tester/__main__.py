@@ -20,7 +20,7 @@ More information is available at:
 Version:
 -------
 
-- naive-tester v1.0.1
+- naive-tester v1.1.0
 """
 import sys
 import logging

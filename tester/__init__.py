@@ -14,9 +14,11 @@ For more information visit https://github.com/FilippSolovev/naive-tester
 """
 
 import logging
+import sys
 
 logging.getLogger(__name__).addHandler(logging.NullHandler())
-logging.basicConfig(level=logging.INFO, format='%(message)s')
+logging.basicConfig(stream=sys.stdout,
+                    level=logging.INFO, format='%(message)s')
 
 # Version of naive_tester package
-__version__ = '1.0.1'
+__version__ = '1.1.0'
