@@ -28,7 +28,7 @@ def run_job(job):
 
     Parameters
     ----------
-    job : a tuple of script's name and it's arguments.
+    job : a tuple of script's name and its arguments.
 
     Returns
     --------
@@ -37,7 +37,7 @@ def run_job(job):
     """
     script, args = job
     output = subprocess.run(
-        [sys.executable] + [script, args],
+        [sys.executable] + [script] + [arg for arg in args],
         stdout=subprocess.PIPE,
         universal_newlines=True).stdout.strip('\n')
     return output
@@ -46,15 +46,18 @@ def run_job(job):
 def assert_job(job, reference_output):
     """Check if script's output coincides with the reference output."""
     script, args = job
-    try:
-        with timer():
-            assert run_job(job) == reference_output
+    with timer():
+        try:
+            reference_output = reference_output[0]
+            actual_output = run_job(job)
+            assert actual_output == reference_output
             logger.info(f'Successfully run the {script}. With argument(s) '
-                        f'{args} got the output of {reference_output}')
-    except AssertionError:
-        logger.error(
-            f'Failed run of the {script} with {args}. '
-            f'The output should be {reference_output}.')
+                        f'{args} got the output of {reference_output}.')
+        except AssertionError:
+            logger.error(
+                f'Failed run of the {script} with {args}. '
+                f'The output should be {reference_output}, '
+                f'but got {actual_output}.')
 
 
 def run_jobs(jobs_with_outputs):

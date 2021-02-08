@@ -47,5 +47,6 @@ def load_files(file_names):
     for file_name in file_names:
         with open(file_name, 'r') as output_file:
             output = output_file.read().strip()
+            output = output.split('\n')
             output_list.append(output)
     return output_list

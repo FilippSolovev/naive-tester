@@ -47,22 +47,21 @@ $ tester some_app.py tests
 ```
 Example output is like the following:
 ```
-Successfully run the some_app.py with tests/test_0.in
-Failed run of the some_app.py with tests/test_1.in. The output should be 26.
+Successfully run the some_app.py. With arguments ['12345678'] got the output of 8.
+Failed run of the some_app.py with ['12345678']. The output should be 8, but got 7.
 ```
 It is possible to save the output to a file using a standard Linux technique:
 ```
 $ tester some_app.py tests > test_report.txt
 ```
 
-## Roadmap
-For now, the Naive Tester can handle only scripts with a single argument.
-This limitation needs to be overcome in the future version.
+If your script has more than just one argument, then to use it with the naive-tester, you should list the arguments on new lines in the '.in' files.
 
 ## Release History
 * 1.0.0
     * 1.0.1 Minor bug fixes
 * 1.1.0 Added timer for each script execution; logging stream handler changed from `stderr` to `stdout`
+* 1.2.0 Added support for multiple script arguments
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/FilippSolovev/naive-tester/blob/master/LICENSE) file for details

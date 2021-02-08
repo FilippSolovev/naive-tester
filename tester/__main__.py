@@ -8,7 +8,7 @@ Usage:
 script - a script to test
 test_case_folder - a folder containing pairs of .in and .out files,
 where
-    .in holds [script] argument
+    .in holds [script] arguments
     .out holds expected output
 
 Contact:
@@ -20,7 +20,7 @@ More information is available at:
 Version:
 -------
 
-- naive-tester v1.1.0
+- naive-tester v1.2.0
 """
 import sys
 import logging
