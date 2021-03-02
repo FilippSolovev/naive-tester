@@ -21,4 +21,4 @@ logging.basicConfig(stream=sys.stdout,
                     level=logging.INFO, format='%(message)s')
 
 # Version of naive_tester package
-__version__ = '1.2.0'
+__version__ = '1.2.1'

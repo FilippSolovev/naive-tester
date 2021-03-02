@@ -20,11 +20,12 @@ More information is available at:
 Version:
 -------
 
-- naive-tester v1.2.0
+- naive-tester v1.2.1
 """
 import sys
 import logging
 
+import tester.config
 from tester.io import check_files_existence, get_files
 from tester.io import do_files_comply, load_files
 from tester.runner import run_jobs
@@ -33,11 +34,18 @@ logger = logging.getLogger(__name__)
 
 
 def main():
-    if len(sys.argv) > 1:
-        script_name = sys.argv[1]
-        dir_name = sys.argv[2]
+
+    args = [arg for arg in sys.argv[1:] if not arg.startswith('-')]
+    opts = [opt for opt in sys.argv[1:] if opt.startswith('-')]
+
+    if len(args) > 1:
+        script_name = args[0]
+        dir_name = args[1]
     else:
         sys.exit()
+
+    if '-v' in opts:
+        tester.config.verbose_output_flg = True
 
     check_files_existence(script_name, 'Script given does not exist')
     check_files_existence(dir_name, 'Directory given does not exist')

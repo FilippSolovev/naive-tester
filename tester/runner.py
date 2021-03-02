@@ -1,9 +1,11 @@
-"""Run an external script and assess its output"""
+"""Run an external script and assess its output."""
 import contextlib
 import logging
 import subprocess
 import sys
 import time
+
+import tester.config
 
 
 logger = logging.getLogger(__name__)
@@ -51,13 +53,19 @@ def assert_job(job, reference_output):
             reference_output = reference_output[0]
             actual_output = run_job(job)
             assert actual_output == reference_output
-            logger.info(f'Successfully run the {script}. With argument(s) '
-                        f'{args} got the output of {reference_output}.')
+            if tester.config.verbose_output_flg:
+                logger.info(f'Successfully run the {script}. With argument(s) '
+                            f'{args} got the output of {reference_output}.')
+            else:
+                logger.info(f'Successfully run the {script}.')
         except AssertionError:
-            logger.error(
-                f'Failed run of the {script} with {args}. '
-                f'The output should be {reference_output}, '
-                f'but got {actual_output}.')
+            if tester.config.verbose_output_flg:
+                logger.error(
+                    f'Failed run of the {script} with {args}. '
+                    f'The output should be {reference_output}, '
+                    f'but got {actual_output}.')
+            else:
+                logger.error(f'Run of the {script} failed.')
 
 
 def run_jobs(jobs_with_outputs):

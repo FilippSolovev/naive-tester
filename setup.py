@@ -10,7 +10,7 @@ with open(os.path.join(HERE, 'README.md')) as file:
 
 setup(
     name='naive-tester',
-    version='1.2.0',
+    version='1.2.1',
     description='A simple testing system based on files',
     long_description=README,
     long_description_content_type='text/markdown',
